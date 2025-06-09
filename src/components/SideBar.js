@@ -134,7 +134,7 @@ export default function Sidebar({ currentUser }) {
     { label: 'Home', path: '/', icon: <Home size={20} /> },
     { label: 'PlayGround', path: '/PlayGround', icon: <Image size={20} /> },
     { label: 'Library', path: '/Library', icon: <BookOpen size={20} /> },
-    { label: 'Favourites', path: '/favourites', icon: <Heart size={20} /> },
+   // { label: 'Favourites', path: '/favourites', icon: <Heart size={20} /> },
     { label: 'Log In', path: '/login', icon: <LogIn size={20} /> },
     { label: 'Sign Up', path: '/signup', icon: <SignatureIcon size={20} /> },
   ];
@@ -171,6 +171,11 @@ export default function Sidebar({ currentUser }) {
         </nav>
       </div>
 
+
+
+
+
+
       <div className="flex items-center justify-between px-4 py-3 bg-white/40 rounded-xl shadow-inner hover:bg-white/50 transition-all cursor-pointer"
         onClick={() => router.push('/profile')}
       >
@@ -179,13 +184,22 @@ export default function Sidebar({ currentUser }) {
             {currentUser?.email?.charAt(0)?.toUpperCase() ?? 'U'}
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-semibold text-gray-800">
-              {currentUser?.email ?? 'user@example.com'}
+
+            <span className="text-sm font-semibold text-gray-700">
+              {/* {currentUser?.email ?? 'user@example.com'} */}
+              {currentUser?.email ?.split('@')[0] || 'user@example.com'}
+
             </span>
-            {/* <span className="text-xs text-gray-500">View Profile</span> */}
+
+              {/* <p className="font-semibold text-pink-600">
+                       @{post.userId?.email?.split('@')[0] || 'unknown'}
+                    </p> */}
+
+
+
           </div>
         </div>
-        <Settings size={18} className="text-gray-600 hover:text-pink-600" />
+        {/* <Settings size={18} className="text-gray-600 hover:text-pink-600" /> */}
       </div>
 
       

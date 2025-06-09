@@ -8,7 +8,48 @@ import axios from 'axios'; // Import axios
 
 
 
-const styles = ['GTA 6 Game','Ghibli', 'Lego', 'Pixar', 'Anime', 'Van Gogh', 'Cyberpunk', 'Sketch', 'Watercolor'];
+//const styles = ['GTA 6 Game','Ghibli', 'Lego', 'Pixar', 'Anime', 'Van Gogh', 'Cyberpunk', 'Sketch', 'Watercolor'];
+
+
+
+
+
+const styles = [
+  { label: 'GTA 6 Game', image: 'gta6.jpg' },
+  { label: 'Lego', image: 'lego.jpg' },
+  { label: 'Pixar', image: 'pixar.jpg' },
+  { label: 'Anime', image: 'anime.jpg' },
+  { label: 'Van Gogh', image: 'vangogh.jpg' },
+  { label: 'Cyberpunk', image: 'cyberpunk.jpg' },
+  { label: 'Sketch', image: 'sketch.jpg' },
+  { label: 'Watercolor', image: 'watercolor.jpg' },
+  { label: 'Ghibli', image: 'ghibli.jpg' },
+  { label: 'Dreamlike', image: 'dreamlike.jpg' },
+  { label: '3D Render', image: '3drender.jpg' },
+  { label: 'Fantasy', image: 'fantasy.jpg' },
+  { label: 'Charcoal', image: 'charcoal.jpg' },
+  { label: 'Neon', image: 'neon.jpg' },
+  { label: 'Harry Potter', image: 'harrypotter.jpg' },
+  { label: 'Raja Ravi Verma', image: 'rajaraviverma.jpg' },
+  { label: 'Japanese ink', image: 'japaneseink.jpg' },
+  { label: 'Korean periodic drama', image: 'koreanperiod.jpg' },
+
+
+
+
+];
+
+
+  // You can also move this to a separate file like components/AnimatedLoader.js
+const AnimatedLoader = ({ message = "Creating Your Magic..." }) => (
+  <div className="flex flex-col items-center justify-center gap-4 animate-fadeIn">
+    <div className="relative w-16 h-16">
+      <div className="absolute inset-0 border-4 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+    <p className="text-pink-700 font-semibold text-lg tracking-wide animate-pulse">{message}</p>
+  </div>
+);
+
 
 export default function PlayGround({ currentUser }) {
   const [step, setStep] = useState(1);
@@ -23,6 +64,7 @@ export default function PlayGround({ currentUser }) {
   const router = useRouter();
   const [scenarioQuote, setScenarioQuote] = useState('');
   const [generatedImageUrl, setGeneratedImageUrl] = useState(null);  //was not here
+
 
 
 
@@ -72,12 +114,6 @@ export default function PlayGround({ currentUser }) {
       setImagePreview(reader.result); // Preview image after reading it
       };
       reader.readAsDataURL(file);
-
-
-    // if (file) {
-    //   setImage(file)
-    //   //setImage(URL.createObjectURL(file));
-    // }
   };
 
 
@@ -102,6 +138,14 @@ export default function PlayGround({ currentUser }) {
     //   alert('You need at least 50 credits to generate a product photo.');
     //   return;
     // }
+
+    if (mode === 'transform' && step === 2) {
+    setStep(3);
+   }
+
+  if (mode === 'scenario') {
+    setStep(prev => prev === 3 ? 4 : prev);
+  }
 
 
      // Prepare form data
@@ -227,10 +271,6 @@ export default function PlayGround({ currentUser }) {
 
 
 
-
-
-
-
 {/* STEP TRACKER */}
 <div className="flex justify-center mb-10 mt-6 w-full">
   <div className="relative flex items-center w-full max-w-3xl px-8">
@@ -324,58 +364,76 @@ export default function PlayGround({ currentUser }) {
       </div>
     )}
 
+    
+
+
+
+
     {step === 2 && (
-      <div className="flex flex-col items-center gap-6">
-        <h2 className="text-xl font-bold text-gray-800">Choose a Style</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {styles.map((style) => (
-            <div
-              key={style}
-              onClick={() => setSelectedStyle(style)}
-              className={`cursor-pointer px-4 py-6 rounded-2xl text-center font-semibold text-gray-700 shadow-md backdrop-blur-md transition border border-white/30 ${
-                selectedStyle === style ? 'bg-pink-500 text-white' : 'bg-white/50 hover:bg-white/70'
-              }`}
-            >
-              {style}
-            </div>
-          ))}
-        </div>
-      </div>
-    )}
+  <div className="flex flex-col items-center gap-6">
+    <h2 className="text-xl font-bold text-gray-800">Choose a Style</h2>
 
 
+<div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-3 gap-6"> {/* Match the image size here */}
 
-
-    {/* {step === 3 && (
-      <div className="flex flex-col items-center gap-6">
-        <h2 className="text-xl font-bold text-gray-800">Transformed Image</h2>
-        <div className="relative w-4/5 max-w-lg h-auto">
-
-        {loading ? (
-          <p className="text-pink-600 font-semibold">Processing Image...</p>
-        ) : (
-          <img
-            src={outputImage}
-            alt="output"
-            className="w-72 h-72 object-cover rounded-2xl shadow-xl"
-          />
-        )}
-
-        <button
-        onClick={downloadImage}  // Call the downloadImage function
-        className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-gray-200 transition"
-        >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-        <polyline points="7 10 12 15 17 10" />
-        <line x1="12" y1="15" x2="12" y2="3" />
-        </svg>
-        </button>
-        
-        </div>
+   <>
+        {styles.map(({ label, image }) => (
        
-      </div>
-    )} */}
+        <div
+          key={label}
+          onClick={() => setSelectedStyle(label)}
+          className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg border-4 transition-all duration-200 ${
+            selectedStyle === label ? 'border-pink-500 scale-105' : 'border-transparent hover:border-pink-300'
+          }`}
+        >
+          <img src={image} alt={label} className="w-full h-70 object-cover" />
+          <div className="absolute bottom-0 w-full bg-black/60 text-white text-center py-1 font-semibold text-sm">
+            {label}
+          </div>
+        </div>
+
+
+
+      ))}
+        </>
+
+
+
+
+      {/* {loading ? (
+        <AnimatedLoader message="Transforming Your Image..." />
+      ) : (
+        <>
+        {styles.map(({ label, image }) => (
+       
+        <div
+          key={label}
+          onClick={() => setSelectedStyle(label)}
+          className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg border-4 transition-all duration-200 ${
+            selectedStyle === label ? 'border-pink-500 scale-105' : 'border-transparent hover:border-pink-300'
+          }`}
+        >
+          <img src={image} alt={label} className="w-full h-70 object-cover" />
+          <div className="absolute bottom-0 w-full bg-black/60 text-white text-center py-1 font-semibold text-sm">
+            {label}
+          </div>
+        </div>
+
+
+
+      ))}
+        </>
+      )} */}
+
+
+    </div>
+
+  </div>
+)}
+
+
+
+
 
 
 {step === 3 && (
@@ -383,7 +441,8 @@ export default function PlayGround({ currentUser }) {
     <h2 className="text-xl font-bold text-gray-800">Transformed Image</h2>
     <div className="relative w-72 h-72"> {/* Match the image size here */}
       {loading ? (
-        <p className="text-pink-600 font-semibold">Processing Image...</p>
+        <AnimatedLoader message="Transforming Your Image..." />
+       // <p className="text-pink-600 font-semibold">Processing Image...</p>
       ) : (
         <>
           <img
@@ -460,28 +519,34 @@ export default function PlayGround({ currentUser }) {
   </label>
 )}
 </div>
-
-      
     )}
 
+    
+
+
+
+    
     {step === 2 && (
-      <div className="flex flex-col items-center gap-6">
-        <h2 className="text-xl font-bold text-gray-800">Choose a Scene Style</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {styles.map((style) => (
-            <div
-              key={style}
-              onClick={() => setSelectedStyle(style)}
-              className={`cursor-pointer px-4 py-6 rounded-2xl text-center font-semibold text-gray-700 shadow-md backdrop-blur-md transition border border-white/30 ${
-                selectedStyle === style ? 'bg-pink-500 text-white' : 'bg-white/50 hover:bg-white/70'
-              }`}
-            >
-              {style}
-            </div>
-          ))}
+  <div className="flex flex-col items-center gap-6">
+    <h2 className="text-xl font-bold text-gray-800">Choose a Style</h2>
+    <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-3 gap-6">
+      {styles.map(({ label, image }) => (
+        <div
+          key={label}
+          onClick={() => setSelectedStyle(label)}
+          className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg border-4 transition-all duration-200 ${
+            selectedStyle === label ? 'border-pink-500 scale-105' : 'border-transparent hover:border-pink-300'
+          }`}
+        >
+          <img src={image} alt={label} className="w-full h-70 object-cover" />
+          <div className="absolute bottom-0 w-full bg-black/60 text-white text-center py-1 font-semibold text-sm">
+            {label}
+          </div>
         </div>
-      </div>
-    )}
+      ))}
+    </div>
+  </div>
+)}
 
     
 
@@ -505,7 +570,9 @@ export default function PlayGround({ currentUser }) {
         <div className="relative w-72 h-72 max-w-lg"> 
 
         {loading ? (
-          <p className="text-pink-600 font-semibold">Generating Image...</p>
+        <AnimatedLoader message="Creating Your Scene..." />
+
+        //  <p className="text-pink-600 font-semibold">Generating Image...</p>
         ) : (
           <img
             src={outputImage}

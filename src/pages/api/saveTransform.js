@@ -31,14 +31,19 @@ async function refineAdBanner(prompt, openaiImage, mode, scenarioQuote ) {
 
         let finalPrompt = prompt;
         if (scenarioQuote !== 'None') {
-          finalPrompt += `. Add this quote inside the image: "${scenarioQuote}"`;
+          finalPrompt += `. Add this quote inside the image, make sure the complete quote is displayed correctly: "${scenarioQuote}"`;
         }
+
+        
+
+
 
 
         const response = await openai.images.edit({
             model: "gpt-image-1",
             image: [openaiImage],
             prompt: finalPrompt,
+            //prompt: prompt,
             size: "1024x1024",
             quality: "medium",
            // response_format: "b64_json",
@@ -67,27 +72,6 @@ async function refineAdBanner(prompt, openaiImage, mode, scenarioQuote ) {
     }
   }
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -218,7 +202,8 @@ const handler = async (req, res) => {
 
 
 
-          const prompt = `Convert this image to ${selectedStyle} style`;
+          const prompt = `You are an image transform expert, transform this image to ${selectedStyle} style, make sure the style is expressed in the photo at the best quality.`;
+          //const prompt = 'Can you generate a banner ad for this product, it should have these details: Title : The best moisturiser for your skin, Subnote: Chemical free for your skin, Off label: 15% OFF, CTA: Buy now, Keep the style modern and sleek';
 
           const refinedInput = await refineAdBanner(prompt, openaiImage, mode, scenarioQuote );
 

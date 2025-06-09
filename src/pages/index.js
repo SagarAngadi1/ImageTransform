@@ -1,7 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import fetchCurrentUser from '../../utils/fetchCurrentUser';
+import axios from 'axios'; // Add this line if missing
+
+
+
+
+
+
+const styles = [
+  { label: 'GTA 6 Game', image: 'gta6.jpg' },
+  { label: 'Lego', image: 'lego.jpg' },
+  { label: 'Pixar', image: 'pixar.jpg' },
+  { label: 'Cyberpunk', image: 'cyberpunk.jpg' },
+ 
+
+
+
+];
 
 
 export default function Home({ currentUser }) {
@@ -9,27 +26,53 @@ export default function Home({ currentUser }) {
   const [navVisible, setNavVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [user, setUser] = useState(currentUser);
+  const [selectedStyle, setSelectedStyle] = useState('');
+
+  const pricingSectionRef = useRef(null);
+
+  const scrollToPricing = () => {
+    if (pricingSectionRef.current) {
+      pricingSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    if (router.query.scrollToPricing === 'true' && pricingSectionRef.current) {
+      pricingSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+
+      const { pathname } = router;
+      router.replace(pathname, undefined, { shallow: true });
+    }
+  }, [router.query]);
+
+
+
+
 
 
   // Example images for Image Transform feature
   const slides = [
      {
-      original: 'sitting.jpg',
-      transformed: 'sitting_transformed.jpg',
+      original: 'EinstienReal.png',
+      transformed: 'anime.jpg',
     },
     {
       original: 'walking.png',
       transformed: 'walking_transformed.png',
     },
     {
-      original: 'exercise.png',
-      transformed: 'meditate.png',
+      original: 'jhonwick.png',
+      transformed: 'jhonwickcyberpunk.jpg',
     },
     {
-      original: 'painting.png',
-      transformed: 'planning.png',
+      original: 'couple.png',
+      transformed: 'couplefantasy.jpg',
     },
   ];
+
+
+
+  
 
   // Example styles for Scenario Builder
   const scenarioSlides = [
@@ -129,6 +172,89 @@ export default function Home({ currentUser }) {
       }
     };
   }, []);
+
+
+
+
+   useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+
+
+  // Function to start checkout process for a specific product
+  const handlePayment = async (planId) => {
+
+  
+    if (!user) {
+      // Redirect to signup if the user is not logged in
+      router.push('/signup');
+      return;
+    }
+
+    try {
+      const userId = user._id
+      //const response = await axios.post('/api/payments', { userId });
+      const response = await axios.post('/api/payments', { planId, userId });
+
+      const { orderId, key, credits } = response.data;
+
+      
+      // Load the Razorpay checkout script
+      const options = {
+        key, // Razorpay Key
+        amount: response.data.amount,
+        currency: 'USD',
+        name: 'ImageTransform - Payment',
+        description: 'Choose your plan',
+        order_id: orderId,
+
+       // Credits: response.data.Credits, //added now
+
+        handler: async function (response) {
+          // Handle the successful payment response here
+          alert('Payment Success: ' + response.razorpay_payment_id);
+
+          // Call the updateUserCredits API to update the credits after successful payment
+          try {
+
+            await axios.post('/api/updateUserCredits', {
+             userId,
+             credits, // The credits for the selected plan
+           });
+          
+          // Redirect to CreateProductPhoto page after updating credits
+           router.push('/PlayGround');
+
+          } catch (updateError) {
+            console.error('Error updating credits:', updateError);
+            alert('Error updating credits. Please contact support.');
+          }
+
+        
+
+        },
+        prefill: {
+          email: user.email, // You can fill these from the user's data
+          //email: 'john.doe@example.com',
+          //contact: '9999999999'
+        },
+        theme: {
+          color: '#3399cc'
+        }
+      };
+
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+
+    } catch (error) {
+      console.error('Payment Error:', error);
+      alert('Failed to start payment process.');
+    }
+  };
   
 
   return (
@@ -139,7 +265,7 @@ export default function Home({ currentUser }) {
         initial={{ y: -100, opacity: 0 }}
         animate={navVisible ? { y: 0, opacity: 1 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="fixed top-6 z-50 bg-white/60 backdrop-blur-lg border border-white/50 rounded-full shadow-md px-8 py-3 flex gap-8 text-pink-700 text-lg font-semibold tracking-wide"
+        className="fixed top-6 z-50 bg-white/60 backdrop-blur-lg border border-white/50 rounded-full shadow-md px-8 py-3 flex gap-8 text-pink-700 text-md font-semibold tracking-wide"
       >
       {user ? null : (
        <>
@@ -154,13 +280,18 @@ export default function Home({ currentUser }) {
        </>
       )}
 
-        {/* <button onClick={() => router.push('/#pricing')} className="hover:text-pink-500 text-gray-700 transition-all">
+        <button 
+        onClick={scrollToPricing}
+       // onClick={() => router.push('/#pricing')}
+        className="hover:text-pink-500 text-gray-700 transition-all">
           Pricing
-        </button> */}
-
-        <button onClick={() => router.push('/feed')} className="hover:text-pink-500 text-gray-700 transition-all">
-          ArtVerse
         </button>
+
+       
+
+        {/* <button onClick={() => router.push('/feed')} className="hover:text-pink-500 text-gray-700 transition-all">
+          ArtVerse
+        </button> */}
 
         <button onClick={() => router.push('/PlayGround')} className="hover:text-pink-500 text-gray-700 transition-all">
           PlayGround
@@ -181,8 +312,8 @@ export default function Home({ currentUser }) {
           transition={{ duration: 0.8 }}
           className="max-w-5xl w-full mt-8 bg-white/40 backdrop-blur-lg p-12 rounded-3xl shadow-2xl text-center border border-white/20"
         >
-          <h1 className="text-3xl font-extrabold text-gray-800 mb-6 tracking-tight drop-shadow-md">
-            Transform Your Images And Share To ArtVerse ✨
+          <h1 className="text-5xl font-extrabold text-gray-800 mb-6 tracking-tight drop-shadow-md">
+            Transform Your Images ✨
             {/* Transform Your Images 5xl ✨ */}
           </h1>
           <p className="text-lg text-gray-600 mb-8">
@@ -246,14 +377,25 @@ export default function Home({ currentUser }) {
 
     <div className="snap-start flex-shrink-0 w-[300px] flex flex-col gap-4 items-center rounded-2xl">
       <p className="text-pink-600 font-semibold text-md">Step 1: Base Image</p>
+
+
+
       <div className="overflow-hidden rounded-xl border border-white/30 w-64 h-64 flex items-center justify-center shadow-md">
+       
+       
+       
+       
         <img
-          src="exercise.png"
+          src="jhonwick.png"
           alt="Base Image"
           className="object-cover w-full h-full"
         />
       </div>
     </div>
+
+
+
+     
 
 
     
@@ -264,6 +406,8 @@ export default function Home({ currentUser }) {
     <div className="snap-start flex-shrink-0 w-[300px] flex flex-col gap-4 items-center rounded-2xl">
       <p className="text-pink-600 font-semibold text-md">Step 2: Select Style</p>
       <div className="grid grid-cols-2 gap-3">
+      
+{/*       
         {['Style 1', 'Style 2', 'Style 3', 'Style 4'].map((style, idx) => (
           <div
             key={idx}
@@ -271,8 +415,44 @@ export default function Home({ currentUser }) {
           >
             {style}
           </div>
-        ))}
+        ))} */}
+
+
+        <>
+        {styles.map(({ label, image }) => (
+       
+        <div
+          key={label}
+          onClick={() => setSelectedStyle(label)}
+          className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg border-4 transition-all duration-200 ${
+            selectedStyle === label ? 'border-pink-500 scale-105' : 'border-transparent hover:border-pink-300'
+          }`}
+        >
+          <img src={image} alt={label} className="w-30 h-30 object-cover" />
+
+          <div className="absolute bottom-0 w-full bg-black/60 text-white text-center py-0 text-sm">
+            {label}
+          </div>
+        </div>
+
+
+
+      ))}
+  </>
+
+
+
+
+
+
+
+
+
+
       </div>
+
+
+
     </div>
 
 
@@ -282,7 +462,7 @@ export default function Home({ currentUser }) {
       <p className="text-pink-600 font-semibold text-md">Step 3: Add Quote</p>
       <div className="w-64 h-64 border-2 border-dashed border-pink-400 rounded-xl flex items-center justify-center bg-white/50 px-4 text-center shadow-md">
         <p className="text-gray-700 font-medium italic text-lg leading-relaxed">
-          “Stay grounded and rise strong.”
+          “It's not over until I win”
         </p>
       </div>
     </div>
@@ -298,7 +478,7 @@ export default function Home({ currentUser }) {
       <p className="text-pink-600 font-semibold text-md">Step 4: Final Preview</p>
       <div className="overflow-hidden rounded-xl border border-white/30 w-64 h-64 flex items-center justify-center shadow-md">
         <img
-          src="meditate.png"
+          src="johnwickscene.jpg"
           alt="Final Preview"
           className="object-cover w-full h-full"
         />
@@ -311,7 +491,7 @@ export default function Home({ currentUser }) {
 
 
 {/* PRICING SECTION */}
-<section className="max-w-7xl w-full bg-white/40 backdrop-blur-lg p-12 rounded-3xl shadow-2xl text-center border border-white/20 mt-12">
+<section ref={pricingSectionRef} className="max-w-7xl w-full bg-white/40 backdrop-blur-lg p-12 rounded-3xl shadow-2xl text-center border border-white/20 mt-12">
   <h2 className="text-5xl font-extrabold text-gray-800 mb-6 tracking-tight drop-shadow-md">
     Pricing Plans 💸
   </h2>
@@ -320,12 +500,16 @@ export default function Home({ currentUser }) {
   </p>
 
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-    {/* STARTER PLAN */}
+    {/* Basic PLAN */}
+    
     <div className="bg-white/30 backdrop-blur-md border border-white/30 rounded-2xl p-6 shadow-xl flex flex-col items-center hover:scale-105 transition-transform duration-300">
-      <h3 className="text-2xl font-bold text-gray-800 mb-2">Starter</h3>
+      <h3 className="text-2xl font-bold text-gray-800 mb-2">Basic</h3>
       <p className="text-pink-600 text-3xl font-extrabold mb-4">$9</p>
       <p className="text-gray-700 mb-6">100 image generations</p>
-      <button className="bg-pink-600 text-white px-6 py-2 rounded-full shadow hover:bg-pink-700 transition duration-300">
+      <button
+      //onClick={handlePayment}
+      onClick={() => handlePayment('basic')}
+      className="bg-pink-600 text-white px-6 py-2 rounded-full shadow hover:bg-pink-700 transition duration-300">
         Get Started
       </button>
     </div>
@@ -335,8 +519,11 @@ export default function Home({ currentUser }) {
       <h3 className="text-2xl font-bold text-gray-800 mb-2">Pro</h3>
       <p className="text-pink-600 text-3xl font-extrabold mb-4">$19</p>
       <p className="text-gray-700 mb-6">200 image generations</p>
-      <button className="bg-pink-600 text-white px-6 py-2 rounded-full shadow hover:bg-pink-700 transition duration-300">
-        Go Pro
+      <button
+      onClick={() => handlePayment('pro')}
+
+       className="bg-pink-600 text-white px-6 py-2 rounded-full shadow hover:bg-pink-700 transition duration-300">
+       Go Pro
       </button>
     </div>
 
@@ -345,12 +532,37 @@ export default function Home({ currentUser }) {
       <h3 className="text-2xl font-bold text-gray-800 mb-2">Ultra</h3>
       <p className="text-pink-600 text-3xl font-extrabold mb-4">$29</p>
       <p className="text-gray-700 mb-6">300 image generations</p>
-      <button className="bg-pink-600 text-white px-6 py-2 rounded-full shadow hover:bg-pink-700 transition duration-300">
+      <button 
+      onClick={() => handlePayment('ultra')}
+      
+      className="bg-pink-600 text-white px-6 py-2 rounded-full shadow hover:bg-pink-700 transition duration-300">
         Go Ultra
       </button>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
 </section>
+
+
+  {/* FOOTER */}
+<footer className="max-w-7xl w-full bg-white/40 backdrop-blur-lg p-12 rounded-3xl shadow-2xl text-center border border-white/20 mt-12">
+  <div className="text-gray-700 text-sm">
+    © {new Date().getFullYear()} ImageTransform. All rights reserved.
+  </div>
+  <div className="text-pink-700 text-sm mt-1">
+    Contact: <a href="mailto:support@imagetransform.app" className="underline hover:text-pink-500">ianassagar@gmail.com</a>
+  </div>
+</footer>
 
 
 

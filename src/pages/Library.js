@@ -265,7 +265,7 @@ export default function Library({ currentUser }) {
       </div>
 
       <main className="flex-1 p-8">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">Your Library</h1>
+        <h1 className="text-3xl font-bold mb-4 text-gray-800">Your Library</h1>
 
         {loading ? (
           <p className="text-gray-600 text-lg">Loading images...</p>
@@ -276,17 +276,17 @@ export default function Library({ currentUser }) {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {images.map((image, idx) => (
-              <div key={idx} className="bg-white/40 backdrop-blur-lg p-4 rounded-2xl shadow-xl">
+              <div key={idx} className="bg-white/40 backdrop-blur-lg p-2 rounded-2xl shadow-xl">
                 <img
                   src={image.generatedImageUrl}
                   alt="Generated"
-                  className="w-full h-64 object-cover rounded-xl mb-3"
+                  className="w-full h-90 object-cover rounded-xl mb-2"
                 />
                 <button
                   onClick={() => window.open(image.generatedImageUrl, '_blank')}
                   className="mt-2 w-full bg-pink-500 text-white rounded-full py-2 font-semibold shadow hover:bg-pink-600 transition"
                 >
-                  View / Download
+                  View
                 </button>
               </div>
             ))}
