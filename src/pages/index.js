@@ -462,7 +462,7 @@ export default function Home({ currentUser }) {
       <p className="text-pink-600 font-semibold text-md">Step 3: Add Quote</p>
       <div className="w-64 h-64 border-2 border-dashed border-pink-400 rounded-xl flex items-center justify-center bg-white/50 px-4 text-center shadow-md">
         <p className="text-gray-700 font-medium italic text-lg leading-relaxed">
-          “It's not over until I win”
+          “It&apos;s not over until I win”
         </p>
       </div>
     </div>
