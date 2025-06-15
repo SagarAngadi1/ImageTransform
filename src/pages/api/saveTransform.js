@@ -5,7 +5,7 @@ import connectToDatabase from '../../../utils/mongoose';
 import User from '../../../models/User';              // Importing the User model
 import Transform from '../../../models/Transform'; // Your Photography model/schema
 import axios from 'axios'; // Import axios for making the request to FastAPI
-//import { uploadFile } from '../../../utils/s3'; // Import the uploadFile function
+import { uploadFile } from '../../../utils/s3'; // Import the uploadFile function
 import { v4 as uuidv4 } from 'uuid';
 import { writeFile } from 'fs/promises';
 import { toFile, OpenAI } from "openai";
@@ -37,8 +37,6 @@ async function refineAdBanner(prompt, openaiImage, mode, scenarioQuote ) {
         
 
 
-
-
         const response = await openai.images.edit({
             model: "gpt-image-1",
             image: [openaiImage],
@@ -54,14 +52,20 @@ async function refineAdBanner(prompt, openaiImage, mode, scenarioQuote ) {
       console.log("OpenAI response full:", response);
   
       const buffer = Buffer.from(b64Image, "base64");
+
+      // const fileName = `banner-${uuidv4()}.png`;
+      // const filePath = path.join(process.cwd(), 'public', 'uploads', fileName);
+      // await writeFile(filePath, buffer);
+      // const generatedImageUrl = `/uploads/${fileName}`; // This is assuming you're serving /public as static
   
-      const fileName = `banner-${uuidv4()}.png`;
-      const filePath = path.join(process.cwd(), 'public', 'uploads', fileName);
-  
-      await writeFile(filePath, buffer);
-  
-      const generatedImageUrl = `/uploads/${fileName}`; // This is assuming you're serving /public as static
-  
+      const fileName = `banner-${uuidv4()}.jpeg`; // or .png depending on format you want
+      const s3Result = await uploadFile(buffer, fileName);
+      const generatedImageUrl = s3Result.Location;
+
+      console.log("GenerateS3 URL", generatedImageUrl);
+
+
+
       return {
         gpt4oResult: prompt,
         generatedProductPhotoURL: generatedImageUrl
@@ -147,6 +151,8 @@ const handler = async (req, res) => {
           //   productPhotoS3Url = result.Location; // S3 URL for the product photo
           // }
   
+
+
           // if (referencePhoto) {
           //   const referencePhotoName = `${Date.now()}-${referencePhoto.originalFilename}`;
           //   const referencePhotoBuffer = fs.readFileSync(referencePhoto.filepath);
@@ -164,13 +170,7 @@ const handler = async (req, res) => {
           //const refinedInput = await refineAdBanner(combinedInputDetails);
 
 
-        //   const openaiImage = await toFile(
-        //     fs.createReadStream(selectedImage.filepath),
-        //     selectedImage.originalFilename,
-        //     {
-        //       type: selectedImage.mimetype || "image/png",
-        //     }
-        //   );
+
 
           console.log("selectedImage details:", selectedImage);
 
@@ -193,12 +193,7 @@ const handler = async (req, res) => {
           const scenarioQuote = Array.isArray(fields.scenarioQuote) ? fields.scenarioQuote[0] : fields.scenarioQuote;
 
 
-        //   if (mode === 'Scenario') {
-        //   const scenarioQuote = Array.isArray(fields.scenarioQuote) ? fields.scenarioQuote[0] : fields.scenarioQuote;
-        //   }
-        //   if (mode == 'transform') {
-        //     const scenarioQuote = 'None'
-        //   }
+       
 
 
 
