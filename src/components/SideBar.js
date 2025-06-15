@@ -149,7 +149,7 @@ export default function Sidebar({ currentUser }) {
       className="fixed top-0 left-0 h-full w-64 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-lg border-r border-white/30 shadow-2xl px-6 py-8 flex flex-col justify-between z-40"
     >
       <div>
-        <h2 className="text-3xl font-extrabold text-gray-900 mb-10 tracking-tight">Art Verse</h2>
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-10 tracking-tight">ArScene</h2>
 
         <nav className="flex flex-col gap-2 text-[17px] font-medium text-gray-700">
           {navItems.map((item) => (
