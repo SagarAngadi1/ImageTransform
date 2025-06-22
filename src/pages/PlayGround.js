@@ -42,12 +42,24 @@ const styles = [
 
   // You can also move this to a separate file like components/AnimatedLoader.js
 const AnimatedLoader = ({ message = "Creating Your Magic..." }) => (
-  <div className="flex flex-col items-center justify-center gap-4 animate-fadeIn">
-    <div className="relative w-16 h-16">
-      <div className="absolute inset-0 border-4 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
+
+
+  // <div className="flex flex-col items-center justify-center gap-4 animate-fadeIn">
+  //   <div className="relative w-16 h-16">
+  //     <div className="absolute inset-0 border-4 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
+  //   </div>
+  //   <p className="text-pink-700 font-semibold text-lg tracking-wide animate-pulse">{message}</p>
+  // </div>
+
+  <div className="w-full bg-gray-200 h-2 mt-4 relative">
+                <div
+                   className="bg-purple-500 h-full absolute left-0"
+                   style={{ width: progress + '%' }}  // Progress percentage
+                ></div>
     </div>
-    <p className="text-pink-700 font-semibold text-lg tracking-wide animate-pulse">{message}</p>
-  </div>
+
+
+
 );
 
 
@@ -58,12 +70,20 @@ export default function PlayGround({ currentUser }) {
 
   const [selectedStyle, setSelectedStyle] = useState('');
   const [outputImage, setOutputImage] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState('transform'); // 'transform' or 'scenario'
   const [user, setUser] = useState(currentUser);
   const router = useRouter();
   const [scenarioQuote, setScenarioQuote] = useState('');
   const [generatedImageUrl, setGeneratedImageUrl] = useState(null);  //was not here
+  const [showSidebar, setShowSidebar] = useState(true);
+
+
+  const [loading, setLoading] = useState(false);
+
+
+  //const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [progress, setProgress] = useState(0); // Progress bar state
+  
 
 
 
@@ -146,6 +166,22 @@ export default function PlayGround({ currentUser }) {
   if (mode === 'scenario') {
     setStep(prev => prev === 3 ? 4 : prev);
   }
+
+
+  setProgress(0); // Reset progress to 0
+    // Simulate progress bar increment
+    let interval;
+    interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return prev;
+        }
+        return prev + 1; // Increment progress by 2%
+      });
+    }, 1000); // Progress will increase every 1000ms
+
+
 
 
      // Prepare form data
@@ -247,21 +283,50 @@ export default function PlayGround({ currentUser }) {
     <div className="min-h-screen flex bg-gradient-to-br from-[#ffc1cc] to-[#fceabb]">
       {/* <Sidebar /> */}
 
-    <div className="w-64">
-    {/* <Sidebar /> */}
+    {/* <div className="w-64">
     <Sidebar currentUser={user} />
+    </div> */}
+
+         {/* Desktop Sidebar */}
+    <div className="hidden sm:block w-64">
+      <Sidebar currentUser={user} navVisible={true} />
     </div>
+
+     {/* Mobile Top Bar */}
+    <div className="sm:hidden w-full flex items-center justify-between bg-white/50 backdrop-blur-lg px-4 py-3 shadow-md fixed top-0 left-0 z-50">
+      <h1 className="text-xl font-bold text-gray-800">PlayGround</h1>
+      <button onClick={() => setShowSidebar(true)} className="text-gray-700 focus:outline-none">
+        <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    
+    
+    {showSidebar && (
+      <div className="fixed inset-0 z-50 bg-black/40" onClick={() => setShowSidebar(false)}>
+        <div className="absolute top-0 left-0 w-64 h-full shadow-lg"
+         onClick={(e) => e.stopPropagation()}
+         >
+          <Sidebar currentUser={user} navVisible={true} />
+        </div>
+      </div>
+    
+    )}
+    
       
-    <main className="flex-1 p-0 flex flex-col items-center justify-center">
+
+      
+    <main className="flex-1 p-0 flex flex-col items-center justify-center mt-20 md:mt-0">
 
 
 {/* TOGGLE SWITCH */}
-<div className="w-full flex justify-end mb-6 pr-2 mt-2">
+<div className="w-full flex justify-center mb-6 pr-0 md:pr-2 mt-2 md:justify-end">
   <div className="flex items-center gap-2 bg-white/40 backdrop-blur-lg p-2 rounded-full shadow-md">
-    <span className={`px-4 py-1 rounded-full cursor-pointer transition text-md ${mode === 'transform' ? 'bg-pink-500 text-white' : 'text-gray-700'}`} onClick={() => setMode('transform')}>
+    <span className={`px-2 py-1 md:px-4 md:py-2 rounded-full cursor-pointer transition text-md ${mode === 'transform' ? 'bg-pink-500 text-white' : 'text-gray-700'}`} onClick={() => setMode('transform')}>
       Image Transform
     </span>
-    <span className={`px-4 py-1 rounded-full cursor-pointer transition text-md ${mode === 'scenario' ? 'bg-pink-500 text-white' : 'text-gray-700'}`} onClick={() => setMode('scenario')}>
+    <span className={`px-2 py-1 md:px-4 md:py-2 rounded-full cursor-pointer transition text-md ${mode === 'scenario' ? 'bg-pink-500 text-white' : 'text-gray-700'}`} onClick={() => setMode('scenario')}>
       Scenario Builder
     </span>
   </div>
@@ -279,7 +344,7 @@ export default function PlayGround({ currentUser }) {
       const isActive = step === num;
 
       return (
-        <div key={num} className="relative z-10 flex flex-col items-center w-1/4">
+        <div key={num} className="relative z-10 flex flex-col items-center w-1/2 md:w-1/4">
           {index < arr.length - 1 && (
             <div className={`absolute top-5 left-1/2 transform -translate-x-0.5 w-full h-1 ${step > num ? 'bg-pink-500' : 'bg-white/50'}`} />
           )}
@@ -386,7 +451,7 @@ export default function PlayGround({ currentUser }) {
             selectedStyle === label ? 'border-pink-500 scale-105' : 'border-transparent hover:border-pink-300'
           }`}
         >
-          <img src={image} alt={label} className="w-full h-70 object-cover" />
+          <img src={image} alt={label} className="w-40 h-40 md:w-full md:h-70 object-cover" />
           <div className="absolute bottom-0 w-full bg-black/60 text-white text-center py-1 font-semibold text-sm">
             {label}
           </div>
@@ -398,32 +463,6 @@ export default function PlayGround({ currentUser }) {
         </>
 
 
-
-
-      {/* {loading ? (
-        <AnimatedLoader message="Transforming Your Image..." />
-      ) : (
-        <>
-        {styles.map(({ label, image }) => (
-       
-        <div
-          key={label}
-          onClick={() => setSelectedStyle(label)}
-          className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg border-4 transition-all duration-200 ${
-            selectedStyle === label ? 'border-pink-500 scale-105' : 'border-transparent hover:border-pink-300'
-          }`}
-        >
-          <img src={image} alt={label} className="w-full h-70 object-cover" />
-          <div className="absolute bottom-0 w-full bg-black/60 text-white text-center py-1 font-semibold text-sm">
-            {label}
-          </div>
-        </div>
-
-
-
-      ))}
-        </>
-      )} */}
 
 
     </div>
@@ -441,8 +480,14 @@ export default function PlayGround({ currentUser }) {
     <h2 className="text-xl font-bold text-gray-800">Transformed Image</h2>
     <div className="relative w-72 h-72"> {/* Match the image size here */}
       {loading ? (
-        <AnimatedLoader message="Transforming Your Image..." />
-       // <p className="text-pink-600 font-semibold">Processing Image...</p>
+        //<AnimatedLoader message="Transforming Your Image..." />
+         //* Progress Bar 
+               <div className="w-full bg-white h-8 mt-4 relative rounded-2xl">
+                <div
+                   className="bg-pink-500 h-full absolute left-0 rounded-2xl"
+                   style={{ width: progress + '%' }}  // Progress percentage
+                ></div>
+                </div>
       ) : (
         <>
           <img
@@ -570,7 +615,13 @@ export default function PlayGround({ currentUser }) {
         <div className="relative w-72 h-72 max-w-lg"> 
 
         {loading ? (
-        <AnimatedLoader message="Creating Your Scene..." />
+        // <AnimatedLoader message="Creating Your Scene..." />
+         <div className="w-full bg-white h-8 mt-4 relative rounded-2xl">
+                <div
+                   className="bg-pink-500 h-full absolute left-0 rounded-2xl"
+                   style={{ width: progress + '%' }}  // Progress percentage
+                ></div>
+                </div>
 
         //  <p className="text-pink-600 font-semibold">Generating Image...</p>
         ) : (

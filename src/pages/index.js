@@ -265,7 +265,11 @@ export default function Home({ currentUser }) {
         initial={{ y: -100, opacity: 0 }}
         animate={navVisible ? { y: 0, opacity: 1 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="fixed top-6 z-50 bg-white/60 backdrop-blur-lg border border-white/50 rounded-full shadow-md px-8 py-3 flex gap-8 text-pink-700 text-md font-semibold tracking-wide"
+        className="fixed top-10 z-50 bg-white/60 backdrop-blur-lg border border-white/50 rounded-full shadow-md
+           px-2 py-2 md:px-8 md:py-3 text-sm md:text-base flex flex-wrap gap-4 sm:gap-6 md:gap-8 text-pink-700 text-md font-semibold tracking-wide"
+           
+          //px-4 py-2 md:px-8 md:py-3 flex gap:4 sm:gap-6 md:gap-8 text-pink-700 text-sm sm:text-md font-semibold tracking-wide"
+
       >
       {user ? null : (
        <>
@@ -303,46 +307,57 @@ export default function Home({ currentUser }) {
 
 
       {/* MAIN CONTENT */}
-      <main className="flex-1 w-full flex flex-col items-center justify-center p-10 pt-32 gap-16">
+      <main 
+      //className="flex-1 w-full flex flex-col items-center justify-center p-10 pt-28 gap-16"
+      className="flex-1 w-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-10 pt-24 sm:pt-28 gap-12"
+      >
         
         {/* IMAGE TRANSFORM SECTION */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-5xl w-full mt-8 bg-white/40 backdrop-blur-lg p-12 rounded-3xl shadow-2xl text-center border border-white/20"
+          className="max-w-5xl w-full mt-12 md:mt-24 bg-white/40 backdrop-blur-lg p-6 md:p-12 rounded-3xl shadow-2xl text-center border border-white/20"
         >
-          <h1 className="text-5xl font-extrabold text-gray-800 mb-6 tracking-tight drop-shadow-md">
+
+
+          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-800 mb-6 tracking-tight drop-shadow-md">
             Transform Your Images ✨
             {/* Transform Your Images 5xl ✨ */}
           </h1>
-          <p className="text-lg text-gray-600 mb-8">
+
+
+          <p className="text-base md:text-lg text-gray-600 mb-8">
             Upload your photo and get magical styles like Ghibli, Lego, Pixar, Anime, and more!
           </p>
 
           {/* Slideshow */}
-          <div className="w-full rounded-2xl p-8 flex flex-col items-center gap-6">
-            <div className="grid grid-cols-2 gap-8">
+          <div className="w-full rounded-2xl p-3 md:p-8 flex flex-col items-center gap-6">
+            <div className="grid grid-cols-2 gap-6 md:gap-8">
               {/* Original Image */}
               <div className="flex flex-col items-center">
-                <p className="mb-2 text-gray-700 font-semibold">Original Image</p>
+                <p className="mb-2 text-gray-700 font-semibold text-sm md:text-lg">Original Image</p>
                 <div className="overflow-hidden rounded-2xl shadow-md border border-white/30">
                   <img 
                     src={slides[currentSlide].original} 
                     alt="Original" 
-                    className="object-cover w-84 h-84" 
+                    className="object-cover w-50 h-40 md:w-84 md:h-84" 
+                    //className="object-cover w-40 h-30"
                   />
                 </div>
               </div>
 
               {/* Transformed Image */}
               <div className="flex flex-col items-center">
-                <p className="mb-2 text-gray-700 font-semibold">Transformed Style</p>
+                <p className="mb-2 text-gray-700 font-semibold text-sm md:text-lg">Style Transform</p>
                 <div className="overflow-hidden rounded-2xl shadow-md border border-white/30">
                   <img 
                     src={slides[currentSlide].transformed} 
                     alt="Transformed" 
-                    className="object-cover w-84 h-84" 
+                    className="object-cover w-50 h-40 md:w-84 md:h-84" 
+
+                    //className="object-cover w-84 h-84"
+
                   />
                 </div>
               </div>
@@ -358,12 +373,13 @@ export default function Home({ currentUser }) {
   initial={{ opacity: 0, y: 40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
-  className="max-w-7xl w-full bg-white/40 backdrop-blur-lg p-12 rounded-3xl shadow-2xl text-center border border-white/20 overflow-hidden"
+  className="max-w-7xl w-full bg-white/40 backdrop-blur-lg p-6 md:p-12 rounded-3xl shadow-2xl text-center border border-white/20 overflow-hidden"
 >
-  <h2 className="text-5xl font-extrabold text-gray-800 mb-6 tracking-tight drop-shadow-md">
-    Scenario Builder 🚀
+
+  <h2 className="text-3xl md:text-5xl font-extrabold text-gray-800 mb-6 tracking-tight drop-shadow-md">
+    Scene Builder
   </h2>
-  <p className="text-lg text-gray-600 mb-8">
+  <p className="text-base md:text-lg text-gray-600 mb-8">
     Craft a scene with your photo, select styles, add quotes, and see the magic unfold!
   </p>
 
@@ -376,47 +392,26 @@ export default function Home({ currentUser }) {
     
 
     <div className="snap-start flex-shrink-0 w-[300px] flex flex-col gap-4 items-center rounded-2xl">
-      <p className="text-pink-600 font-semibold text-md">Step 1: Base Image</p>
-
-
+      <p className="text-pink-600 font-semibold text-base">Step 1: Base Image</p>
 
       <div className="overflow-hidden rounded-xl border border-white/30 w-64 h-64 flex items-center justify-center shadow-md">
-       
-       
-       
-       
         <img
           src="jhonwick.png"
           alt="Base Image"
           className="object-cover w-full h-full"
+         // className="object-cover w-50 h-40 md:w-full md:h-full"
+
         />
       </div>
     </div>
 
-
-
-     
-
-
-    
-
-              
+           
 
     {/* STEP 2: Select Style */}
     <div className="snap-start flex-shrink-0 w-[300px] flex flex-col gap-4 items-center rounded-2xl">
-      <p className="text-pink-600 font-semibold text-md">Step 2: Select Style</p>
+      <p className="text-pink-600 font-semibold text-base">Step 2: Select Style</p>
       <div className="grid grid-cols-2 gap-3">
       
-{/*       
-        {['Style 1', 'Style 2', 'Style 3', 'Style 4'].map((style, idx) => (
-          <div
-            key={idx}
-            className="w-30 h-30 rounded-xl shadow-md border border-white/30 bg-white/50 backdrop-blur-md flex items-center justify-center text-gray-800 font-semibold hover:bg-white/70 transition"
-          >
-            {style}
-          </div>
-        ))} */}
-
 
         <>
         {styles.map(({ label, image }) => (
@@ -492,10 +487,10 @@ export default function Home({ currentUser }) {
 
 {/* PRICING SECTION */}
 <section ref={pricingSectionRef} className="max-w-7xl w-full bg-white/40 backdrop-blur-lg p-12 rounded-3xl shadow-2xl text-center border border-white/20 mt-12">
-  <h2 className="text-5xl font-extrabold text-gray-800 mb-6 tracking-tight drop-shadow-md">
+  <h2 className="text-3xl md:text-5xl font-extrabold text-gray-800 mb-6 tracking-tight drop-shadow-md">
     Pricing Plans 💸
   </h2>
-  <p className="text-lg text-gray-600 mb-10">
+  <p className="text-base md:text-lg text-gray-600 mb-10">
     Choose the plan that fits your creativity needs best.
   </p>
 
@@ -509,7 +504,7 @@ export default function Home({ currentUser }) {
       <button
       //onClick={handlePayment}
       onClick={() => handlePayment('basic')}
-      className="bg-pink-600 text-white px-6 py-2 rounded-full shadow hover:bg-pink-700 transition duration-300">
+      className="bg-pink-600 text-white px-3 md:px-6 py-2 rounded-full shadow hover:bg-pink-700 transition duration-300">
         Get Started
       </button>
     </div>

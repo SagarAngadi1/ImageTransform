@@ -96,15 +96,15 @@ export default function Signup() {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#ffc1cc] to-[#fceabb]">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#ffc1cc] to-[#fceabb] p-4 md:p-0">
 
     <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="bg-white/40 backdrop-blur-lg border border-white/20 shadow-2xl rounded-3xl p-10 w-full max-w-md"
+        className="bg-white/40 backdrop-blur-lg border border-white/20 shadow-2xl rounded-3xl p-4 md:p-10 w-full max-w-md"
     >
-    <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">Create Your Account</h2>
+    <h2 className="text-xl md:text-2xl font-bold text-gray-800 text-center mb-6">Create Your Account</h2>
 
     {/* {error && (
     <div className="bg-red-100 text-red-700 p-2 text-sm rounded mb-4 text-center">{error}</div>

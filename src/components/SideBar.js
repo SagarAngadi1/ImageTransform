@@ -146,7 +146,11 @@ export default function Sidebar({ currentUser }) {
       initial={{ x: -100, opacity: 0 }}
       animate={navVisible ? { x: 0, opacity: 1 } : {}}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 h-full w-64 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-lg border-r border-white/30 shadow-2xl px-6 py-8 flex flex-col justify-between z-40"
+      //className="flex sm:flex fixed top-0 left-0 h-full w-64 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-lg border-r border-white/30 shadow-2xl px-6 py-8 flex-col justify-between z-40"
+      className={`${
+  navVisible ? 'flex' : 'hidden'
+} sm:flex fixed top-0 left-0 h-full w-64 bg-gradient-to-br from-white/60 to-white/30 backdrop-blur-lg border-r border-white/30 shadow-2xl px-6 py-8 flex-col justify-between z-40`}
+
     >
       <div>
         <h2 className="text-3xl font-extrabold text-gray-900 mb-10 tracking-tight">ArScene</h2>

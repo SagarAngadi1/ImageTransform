@@ -24,7 +24,6 @@ const openai = new OpenAI({
   
 
 
-
 async function refineAdBanner(prompt, openaiImage, mode, scenarioQuote ) {
     try {
 
@@ -135,10 +134,10 @@ const handler = async (req, res) => {
   
           }
   
-        //   if (user.credits < 50) {
-        //     console.log('Not enough credits:', user.credits);
-        //     return res.status(400).json({ message: 'Not enough credits' });
-        //   }
+          if (user.credits < 50) {
+            console.log('Not enough credits:', user.credits);
+            return res.status(400).json({ message: 'Not enough credits' });
+          }
   
    
           
@@ -193,10 +192,6 @@ const handler = async (req, res) => {
           const scenarioQuote = Array.isArray(fields.scenarioQuote) ? fields.scenarioQuote[0] : fields.scenarioQuote;
 
 
-       
-
-
-
           const prompt = `You are an image transform expert, transform this image to ${selectedStyle} style, make sure the style is expressed in the photo at the best quality.`;
           //const prompt = 'Can you generate a banner ad for this product, it should have these details: Title : The best moisturiser for your skin, Subnote: Chemical free for your skin, Off label: 15% OFF, CTA: Buy now, Keep the style modern and sleek';
 
@@ -216,8 +211,6 @@ const handler = async (req, res) => {
             // referencePhoto: referencePhotoS3Url,
             generatedImageUrl: refinedInput.generatedProductPhotoURL,
             userId: userId,
-
-          
           });
   
           await newTransform.save();
