@@ -287,6 +287,21 @@ export default function PlayGround({ currentUser }) {
     <Sidebar currentUser={user} />
     </div> */}
 
+    <Head>
+     <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+      <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"></script>
+      <script>
+         {`
+          window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+          window.amplitude.init('28c28af38ad4cd334bed1c7f7b9631ff', {
+          autocapture: {
+          elementInteractions: true
+           }
+         });
+        `}
+      </script>
+      </Head>
+
          {/* Desktop Sidebar */}
     <div className="hidden sm:block w-64">
       <Sidebar currentUser={user} navVisible={true} />

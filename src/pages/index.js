@@ -260,6 +260,74 @@ export default function Home({ currentUser }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#ffc1cc] to-[#fceabb] flex flex-col items-center justify-center relative overflow-hidden">
 
+
+    <Head>
+      {/* <title>A New Virtual Shopping Experience - DressUp AI</title>
+        <meta name="description" content="Virtual Try-On for Everyone – Style Yourself or Your Brand Effortlessly" />
+        <meta name="keywords" content="Dress, Fashion, AI Fashion, Virtual Try-On, Clothing Brand, Clothing Business, DressUp AI" />
+        <meta name="robots" content="index, follow" />
+        <link rel="icon" href="/logo.png" />
+        <meta name="author" content="DressUp AI" />
+        */}
+       
+        {/* Open Graph (OG) meta tags for social sharing */}
+      {/* <meta property="og:title" content="DressUp AI - A New Virtual Shopping Experience" />
+      <meta property="og:description" content="Virtual Try-On for Everyone – Style Yourself or Your Brand Effortlessly" />
+      <meta property="og:image" content="https://dressupai.onrender.com/logo.png" />
+      <meta property="og:url" content="https://dressupai.onrender.com/" />
+      <meta property="og:type" content="website" /> */}
+
+      {/* Twitter Card meta tags for social sharing */}
+      {/* <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="DressUp AI - Virtual Try-On for Everyone – Style Yourself or Your Brand Effortlessly" />
+      <meta name="twitter:description" content="No more guessing how clothes will look on you, skip the dressing rooms and shop with confidence. Try multiple outfits from the comfort of your home." />
+      <meta name="twitter:image" content="https://dressupai.onrender.com/logo.png" /> */}
+
+      {/* Structured Data (JSON-LD) for SEO */}
+      {/* <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "DressUp AI - A New Virtual Shopping Experience",
+            "image": "https://dressupai.onrender.com/logo.png",
+            "description": "DressUp AI - Virtual Try-On for Everyone – Style Yourself or Your Brand Effortlessly",
+            "brand": "DressUp AI",
+            "offers": {
+              "@type": "Offer",
+              "url": "https://dressupai.onrender.com/",
+              "priceCurrency": "USD",
+              "price": "19",
+              "availability": "https://schema.org/InStock"
+            }
+          })}
+      </script> */}
+
+
+      <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+      <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"></script>
+      <script>
+         {`
+          window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+          window.amplitude.init('28c28af38ad4cd334bed1c7f7b9631ff', {
+          autocapture: {
+          elementInteractions: true
+           }
+         });
+        `}
+      </script>
+      </Head>
+
+
+
+
+
+
+
+
+
+
+
+
       {/* NAVBAR */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
