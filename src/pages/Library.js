@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import fetchCurrentUser from '../../utils/fetchCurrentUser';
 import axios from 'axios';
+import Head from 'next/head';
+
 
 export default function Library({ currentUser }) {
   const [images, setImages] = useState([]);

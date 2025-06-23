@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'; // Correct import
 import { parseCookies } from 'nookies';
 import fetchCurrentUser from '../../utils/fetchCurrentUser';
 import axios from 'axios'; // Import axios
+import Head from 'next/head';
 
 
 

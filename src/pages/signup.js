@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'; // Imports the useState hook from R
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { motion } from "framer-motion";
+import Head from 'next/head';
+
 
 
 export default function Signup() {
@@ -114,7 +116,7 @@ export default function Signup() {
       </script>
       </Head>
 
-      
+
 
     <motion.div
         initial={{ opacity: 0, y: 40 }}

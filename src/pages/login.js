@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from "framer-motion";
 import Link from 'next/link';
+import Head from 'next/head';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');

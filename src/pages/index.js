@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import fetchCurrentUser from '../../utils/fetchCurrentUser';
 import axios from 'axios'; // Add this line if missing
+import Head from 'next/head';
+
 
 
 
