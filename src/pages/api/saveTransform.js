@@ -192,8 +192,8 @@ const handler = async (req, res) => {
           const scenarioQuote = Array.isArray(fields.scenarioQuote) ? fields.scenarioQuote[0] : fields.scenarioQuote;
 
 
-          const prompt = `(lighnting) sharp details on the face and suit looking to the right make the iamge black and white crop the image above the hands, focusing on the upper body remove the background and replace it with a blakc one. 
-Use artificial lightning on the face and shoulder precisely enhance the shadows (not just a basic black-and-white conversion) Adjust gaze to look slightly downard`;
+          const prompt = `(lighnting) sharp details on the face and suit looking to the straight make the iamge black and white crop the image above the hands, focusing on the upper body remove the background and replace it with a blakc one. 
+Use artificial lightning on the face and shoulder precisely enhance the shadows (not just a basic black-and-white conversion) Adjust gaze to look face to face`;
                    
           //const prompt = `You are an image transform expert, transform this image to ${selectedStyle} style, make sure the style is expressed in the photo at the best quality.`;
           
