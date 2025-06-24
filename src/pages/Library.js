@@ -75,7 +75,7 @@ export default function Library({ currentUser }) {
     <div className="min-h-screen flex bg-gradient-to-br from-[#ffc1cc] to-[#fceabb]">
 
     <Head>
-     <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+     {/* <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
       <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"></script>
       <script>
          {`
@@ -86,7 +86,7 @@ export default function Library({ currentUser }) {
            }
          });
         `}
-      </script>
+      </script> */}
       </Head>
 
 

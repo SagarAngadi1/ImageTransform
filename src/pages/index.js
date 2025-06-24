@@ -305,7 +305,7 @@ export default function Home({ currentUser }) {
       </script> */}
 
 
-      <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+      {/* <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
       <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"></script>
       <script>
          {`
@@ -316,7 +316,7 @@ export default function Home({ currentUser }) {
            }
          });
         `}
-      </script>
+      </script> */}
       </Head>
 
 

@@ -73,7 +73,7 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#ffc1cc] to-[#fceabb] p-4 md:p-0">
      
      <Head>
-     <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+     {/* <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
       <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"></script>
       <script>
          {`
@@ -84,7 +84,7 @@ const Login = () => {
            }
          });
         `}
-      </script>
+      </script> */}
       </Head>
     
 

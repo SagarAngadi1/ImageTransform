@@ -289,7 +289,7 @@ export default function PlayGround({ currentUser }) {
     </div> */}
 
     <Head>
-     <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
+     {/* <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
       <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"></script>
       <script>
          {`
@@ -300,7 +300,7 @@ export default function PlayGround({ currentUser }) {
            }
          });
         `}
-      </script>
+      </script> */}
       </Head>
 
          {/* Desktop Sidebar */}
@@ -392,13 +392,6 @@ export default function PlayGround({ currentUser }) {
 
 
 
-
-
-
-
-
-
-
 <div className="w-full max-w-4xl bg-white/40 backdrop-blur-lg p-4 rounded-3xl shadow-2xl border border-white/20 min-h-[500px] flex flex-col">
   {/* Card Body: Main Section */}
 {mode === 'transform' ? (
@@ -431,7 +424,8 @@ export default function PlayGround({ currentUser }) {
             <img
               src={imagePreview}
               alt="preview"
-              className="w-64 h-64 object-cover rounded-2xl shadow-lg hover:opacity-90 transition"
+              //className="w-64 h-64 object-cover rounded-2xl shadow-lg hover:opacity-90 transition"
+               className="max-w-64 max-h-64 object-contain rounded-2xl shadow-lg hover:opacity-90 transition"
             />
             <input
               id="image-upload"
@@ -509,6 +503,7 @@ export default function PlayGround({ currentUser }) {
           <img
             src={outputImage}
             alt="output"
+            //className="max-w-64 max-h-64 object-contain rounded-2xl shadow-lg hover:opacity-90 transition"
             className="w-full h-full object-cover rounded-2xl shadow-xl"
           />
           <button
