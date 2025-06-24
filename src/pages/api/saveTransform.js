@@ -41,7 +41,7 @@ async function refineAdBanner(prompt, openaiImage, mode, scenarioQuote ) {
             image: [openaiImage],
             prompt: finalPrompt,
             //prompt: prompt,
-            size: "1024x1400",
+            size: "1024x1024",
             quality: "medium",
            // response_format: "b64_json",
             n: 1,
