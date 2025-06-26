@@ -192,10 +192,12 @@ const handler = async (req, res) => {
           const scenarioQuote = Array.isArray(fields.scenarioQuote) ? fields.scenarioQuote[0] : fields.scenarioQuote;
 
 
-          const prompt = `(lighnting) sharp details on the face and suit looking to the straight make the iamge black and white crop the image above the hands, focusing on the upper body remove the background and replace it with a blakc one. 
-Use artificial lightning on the face and shoulder precisely enhance the shadows (not just a basic black-and-white conversion) Adjust gaze to look face to face`;
+         // FINAL PROMPT const prompt = `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, without changing any facial features, add dramatic black-and-white lighting. Keep sharp details on the face, shadows falling diagonally. Background must be completely black. Add a soft misty haze to the edges. Expression: confident but calm. Focus on upper body, crop above elbows. Suit or leather jacket, with cinematic grain. Gaze slightly off-camera like in a crime drama poster.`;
+          
+//           `(lighnting) sharp details on the face and suit looking to the straight make the iamge black and white crop the image above the hands, focusing on the upper body remove the background and replace it with a blakc one. 
+// Use artificial lightning on the face and shoulder precisely enhance the shadows (not just a basic black-and-white conversion) Adjust gaze to look face to face`;
                    
-          //const prompt = `You are an image transform expert, transform this image to ${selectedStyle} style, make sure the style is expressed in the photo at the best quality.`;
+          const prompt = `You are an image transform expert, transform this image to ${selectedStyle} style, make sure the style is expressed in the photo at the best quality.`;
           
           //const prompt = 'Can you generate a banner ad for this product, it should have these details: Title : The best moisturiser for your skin, Subnote: Chemical free for your skin, Off label: 15% OFF, CTA: Buy now, Keep the style modern and sleek';
 
