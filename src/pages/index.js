@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import fetchCurrentUser from '../../utils/fetchCurrentUser';
 import axios from 'axios'; // Add this line if missing
 import Head from 'next/head';
+import Script from 'next/script';
+
 
 
 
@@ -318,6 +320,29 @@ export default function Home({ currentUser }) {
         `}
       </script> */}
       </Head>
+
+
+
+      <Script
+  src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"
+  strategy="afterInteractive"
+/>
+<Script
+  src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz"
+  strategy="afterInteractive"
+/>
+<Script id="amplitude-init" strategy="afterInteractive">
+  {`
+    window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+    window.amplitude.init('28c28af38ad4cd334bed1c7f7b9631ff', {
+      autocapture: {
+        elementInteractions: true
+      }
+    });
+  `}
+</Script>
+
+
 
 
 
