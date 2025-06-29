@@ -394,10 +394,11 @@ export default function PlayGround({ currentUser }) {
 
 
 <div className="w-full max-w-4xl bg-white/40 backdrop-blur-lg p-4 rounded-3xl shadow-2xl border border-white/20 min-h-[500px] flex flex-col">
-  {/* Card Body: Main Section */}
 
 
-<div className="mt-auto pt-6 flex justify-end">
+
+{/* Generate button related code */}
+<div className="mt-auto pt-0 flex justify-end">
   {mode === 'transform' ? (
   <>
     {step === 1 && image && (
@@ -440,13 +441,14 @@ export default function PlayGround({ currentUser }) {
 
 
 
+  {/* Card Body: Main Section */}
 {mode === 'transform' ? (
   // ======== IMAGE TRANSFORM UI ==========
   <div className="flex-grow mt-6">
 
     {step === 1 && (
       <div className="flex flex-col items-center gap-6">
-        <h2 className="text-xl font-bold text-gray-700">Upload Image To Transform</h2>
+        <h2 className="text-2xl font-bold text-gray-700">Upload Image To Transform</h2>
 
         {!imagePreview ? (
           <label
@@ -492,7 +494,7 @@ export default function PlayGround({ currentUser }) {
 
     {step === 2 && (
   <div className="flex flex-col items-center gap-6">
-    <h2 className="text-xl font-bold text-gray-800">Choose a Style</h2>
+    <h2 className="text-2xl font-bold text-gray-700">Choose a Style</h2>
 
 
 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-3 gap-6"> {/* Match the image size here */}
@@ -725,7 +727,7 @@ export default function PlayGround({ currentUser }) {
   
   
   
-
+{/* 
   <div className="mt-auto pt-6 flex justify-end">
   {mode === 'transform' ? (
   <>
@@ -764,8 +766,10 @@ export default function PlayGround({ currentUser }) {
     )}
   </>
 )}
+</div> */}
 
-  </div>
+
+
 
 
 </div>
