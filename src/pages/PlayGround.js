@@ -659,7 +659,7 @@ export default function PlayGround({ currentUser }) {
         <h2 className="text-xl font-bold text-gray-800">Add Quote</h2>
         <textarea
           placeholder="Add an inspiring quote..."
-          className="w-full max-w-md p-4 rounded-xl shadow-md border border-pink-300 bg-white/60"
+          className="w-full max-w-md p-4 rounded-xl shadow-md border border-pink-300 bg-white/60 text-gray-700 placeholder-gray-500"
           value={scenarioQuote}
           onChange={(e) => setScenarioQuote(e.target.value)}
           rows={5}
