@@ -354,6 +354,7 @@ export default function PlayGround({ currentUser }) {
 
 {/* STEP TRACKER */}
 <div className="flex justify-center mb-10 mt-6 w-full">
+  
   <div className="relative flex items-center w-full max-w-3xl px-8">
     {(mode === 'transform' ? [1, 2, 3] : [1, 2, 3, 4]).map((num, index, arr) => {
       const isCompleted = step > num;
@@ -394,6 +395,51 @@ export default function PlayGround({ currentUser }) {
 
 <div className="w-full max-w-4xl bg-white/40 backdrop-blur-lg p-4 rounded-3xl shadow-2xl border border-white/20 min-h-[500px] flex flex-col">
   {/* Card Body: Main Section */}
+
+
+<div className="mt-auto pt-6 flex justify-end">
+  {mode === 'transform' ? (
+  <>
+    {step === 1 && image && (
+      <button onClick={() => setStep(2)} className="px-6 py-3 rounded-full bg-pink-500 text-white shadow-lg hover:bg-pink-600 transition">
+        Next
+      </button>
+    )}
+    {step === 2 && selectedStyle && (
+      <button onClick={handleGenerate} className="px-6 py-3 rounded-full bg-pink-500 text-white shadow-lg hover:bg-pink-600 transition">
+        Generate 🎨
+      </button>
+    )}
+  </>
+) : (
+  <>
+
+    {step === 1 && image && (
+      <button onClick={() => setStep(2)} className="px-6 py-3 rounded-full bg-pink-500 text-white shadow-lg hover:bg-pink-600 transition">
+        Next
+      </button>
+    )}
+     {step === 2 && selectedStyle && (
+      <button onClick={() => setStep(3)} className="px-6 py-3 rounded-full bg-pink-500 text-white shadow-lg hover:bg-pink-600 transition">
+        Next
+      </button>
+    )}
+
+    {step === 3 && (
+      <button
+        onClick={handleGenerate}
+        className="px-6 py-3 rounded-full bg-pink-500 text-white shadow-lg hover:bg-pink-600 transition"
+      >
+        Generate Scene 🌅
+      </button>
+    )}
+  </>
+)}
+
+  </div>
+
+
+
 {mode === 'transform' ? (
   // ======== IMAGE TRANSFORM UI ==========
   <div className="flex-grow mt-6">
@@ -720,6 +766,8 @@ export default function PlayGround({ currentUser }) {
 )}
 
   </div>
+
+
 </div>
 
       </main>

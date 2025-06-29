@@ -179,6 +179,40 @@ export default function Home({ currentUser }) {
 
 
 
+   useEffect(() => {
+    const loadAmplitude = async () => {
+      const amplitudeScript = document.createElement('script');
+      amplitudeScript.src = 'https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz';
+      amplitudeScript.async = true;
+
+      const replayScript = document.createElement('script');
+      replayScript.src = 'https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.8.0-min.js.gz';
+      replayScript.async = true;
+
+      document.body.appendChild(amplitudeScript);
+      document.body.appendChild(replayScript);
+
+      amplitudeScript.onload = () => {
+        replayScript.onload = () => {
+          if (window.amplitude && window.sessionReplay) {
+            window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+            window.amplitude.init('28c28af38ad4cd334bed1c7f7b9631ff', {
+              autocapture: {
+                elementInteractions: true,
+              },
+            });
+          } else {
+            console.warn('Amplitude or SessionReplay not loaded');
+          }
+        };
+      };
+    };
+
+    loadAmplitude();
+  }, []);
+
+
+
 
    useEffect(() => {
     const script = document.createElement('script');
@@ -323,7 +357,7 @@ export default function Home({ currentUser }) {
 
 
 
-      <Script
+      {/* <Script
   src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"
   strategy="afterInteractive"
 />
@@ -340,7 +374,7 @@ export default function Home({ currentUser }) {
       }
     });
   `}
-</Script>
+</Script> */}
 
 
 
