@@ -104,7 +104,7 @@ const Login = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="p-3 rounded-xl border border-white/50 bg-white/60 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-400"
+              className="p-3 rounded-xl border border-white/50 bg-white/60 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-400 text-black"
               required
             />
             <input
@@ -112,7 +112,7 @@ const Login = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="p-3 rounded-xl border border-white/50 bg-white/60 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-400"
+              className="p-3 rounded-xl border border-white/50 bg-white/60 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-400 text-gray-700"
               required
             />
             <button
