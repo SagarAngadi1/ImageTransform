@@ -104,7 +104,7 @@ const Login = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="p-3 rounded-xl border border-white/50 bg-white/60 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-400 text-black"
+              className="p-3 rounded-xl border border-white/50 bg-white/60 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-400 text-gray-700"
               required
             />
             <input
@@ -161,8 +161,8 @@ const Login = () => {
         )}
 
         <div className="mt-6 text-center">
-          <p className="text-sm">
-            New to Space?{' '}
+          <p className="text-sm text-gray-700">
+            New to ArScene?{' '}
             <Link href="/signup" className="text-pink-600 font-semibold hover:underline">
               Sign up!
             </Link>
