@@ -30,7 +30,7 @@ async function refineAdBanner(prompt, openaiImage, mode, scenarioQuote ) {
 
         let finalPrompt = prompt;
         if (scenarioQuote !== 'None') {
-          finalPrompt += `. Add this quote inside the image, make sure the complete quote is displayed correctly: "${scenarioQuote}"`;
+          finalPrompt += `. Add this quote inside the image, make sure the complete quote is displayed correctly in the image and not cropped out: "${scenarioQuote}"`;
         }
 
         
@@ -188,6 +188,8 @@ const handler = async (req, res) => {
         
           
           const selectedStyle = Array.isArray(fields.selectedStyle) ? fields.selectedStyle[0] : fields.selectedStyle;
+          const selectedPrompt = Array.isArray(fields.selectedPrompt) ? fields.selectedPrompt[0] : fields.selectedPrompt;
+          
           const mode = Array.isArray(fields.mode) ? fields.mode[0] : fields.mode;
           const scenarioQuote = Array.isArray(fields.scenarioQuote) ? fields.scenarioQuote[0] : fields.scenarioQuote;
 
@@ -197,10 +199,12 @@ const handler = async (req, res) => {
 //           `(lighnting) sharp details on the face and suit looking to the straight make the iamge black and white crop the image above the hands, focusing on the upper body remove the background and replace it with a blakc one. 
 // Use artificial lightning on the face and shoulder precisely enhance the shadows (not just a basic black-and-white conversion) Adjust gaze to look face to face`;
                    
-          const prompt = `You are an image transform expert, transform this image to ${selectedStyle} style, make sure the style is expressed in the photo at the best quality.`;
-          
+         // const prompt = `You are an image transform expert, transform this image to ${selectedStyle} style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`;
+         // const prompt = `Transform this image into a high-quality ${selectedStyle} style artwork. Strictly preserve the entire subject in the image generation — do not crop out any part of the face, head, or body. Fit the full figure within the frame while maintaining clear expression of the ${selectedStyle} style. Make sure the transformed image is centered, balanced, and nothing important is cut off. The image should be in 1024x1024 resolution`;
+
           //const prompt = 'Can you generate a banner ad for this product, it should have these details: Title : The best moisturiser for your skin, Subnote: Chemical free for your skin, Off label: 15% OFF, CTA: Buy now, Keep the style modern and sleek';
 
+          const prompt = selectedPrompt ;
           const refinedInput = await refineAdBanner(prompt, openaiImage, mode, scenarioQuote );
 
   

@@ -9,10 +9,6 @@ import Script from 'next/script';
 
 
 
-
-
-
-
 const styles = [
   { label: 'GTA 6 Game', image: 'gta6.jpg' },
   { label: 'Lego', image: 'lego.jpg' },

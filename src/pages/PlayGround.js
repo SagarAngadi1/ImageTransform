@@ -9,34 +9,177 @@ import Head from 'next/head';
 
 
 
-//const styles = ['GTA 6 Game','Ghibli', 'Lego', 'Pixar', 'Anime', 'Van Gogh', 'Cyberpunk', 'Sketch', 'Watercolor'];
 
 
 
 
 
 const styles = [
-  { label: 'GTA 6 Game', image: 'gta6.jpg' },
-  { label: 'Lego', image: 'lego.jpg' },
-  { label: 'Pixar', image: 'pixar.jpg' },
-  { label: 'Anime', image: 'anime.jpg' },
-  { label: 'Van Gogh', image: 'vangogh.jpg' },
-  { label: 'Cyberpunk', image: 'cyberpunk.jpg' },
-  { label: 'Sketch', image: 'sketch.jpg' },
-  { label: 'Watercolor', image: 'watercolor.jpg' },
-  { label: 'Ghibli', image: 'ghibli.jpg' },
-  { label: 'Dreamlike', image: 'dreamlike.jpg' },
-  { label: '3D Render', image: '3drender.jpg' },
-  { label: 'Fantasy', image: 'fantasy.jpg' },
-  { label: 'Charcoal', image: 'charcoal.jpg' },
-  { label: 'Neon', image: 'neon.jpg' },
-  { label: 'Harry Potter', image: 'harrypotter.jpg' },
-  { label: 'Raja Ravi Verma', image: 'rajaraviverma.jpg' },
-  { label: 'Japanese ink', image: 'japaneseink.jpg' },
-  { label: 'Korean periodic drama', image: 'koreanperiod.jpg' },
+  { label: 'GTA 6 Game', 
+    image: 'gta6.jpg',
+    prompt: `You are an image transform expert, transform this image to GTA 6 Game style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+  },
+  
+  { label: 'Lego',
+    image: 'lego.jpg',
+    prompt: `You are an image transform expert, transform this image to Lego style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Pixar', image: 'pixar.jpg',
+    prompt: `You are an image transform expert, transform this image to Pixar style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Anime', image: 'anime.jpg',
+    prompt: `You are an image transform expert, transform this image to Anime style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Van Gogh', image: 'vangogh.jpg',
+    prompt: `You are an image transform expert, transform this image to Van Gogh style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Cyberpunk', image: 'cyberpunk.jpg',
+    prompt: `You are an image transform expert, transform this image to Cyberpunk style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Sketch', image: 'sketch.jpg',
+    prompt: `You are an image transform expert, transform this image to Sketch style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Watercolor', image: 'watercolor.jpg',
+    prompt: `You are an image transform expert, transform this image to Watercolor style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+
+   },
+  { label: 'Ghibli', image: 'ghibli.jpg',
+    prompt: `You are an image transform expert, transform this image to Ghibli style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Dreamlike', image: 'dreamlike.jpg',
+    prompt: `You are an image transform expert, transform this image to Dreamlike style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: '3D Render', image: '3drender.jpg',
+    prompt: `You are an image transform expert, transform this image to 3D Render style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Fantasy', image: 'fantasy.jpg',
+    prompt: `You are an image transform expert, transform this image to Fantasy style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Charcoal', image: 'charcoal.jpg',
+    prompt: `You are an image transform expert, transform this image to Charcoal style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Neon', image: 'neon.jpg',
+    prompt: `You are an image transform expert, transform this image to Neon style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Harry Potter', image: 'harrypotter.jpg',
+    prompt: `You are an image transform expert, transform this image to Harry Potter style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Raja Ravi Verma', image: 'rajaraviverma.jpg',
+    prompt: `You are an image transform expert, transform this image to Raja Ravi Verma style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Japanese ink', image: 'japaneseink.jpg',
+    prompt: `You are an image transform expert, transform this image to Japanese ink style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  { label: 'Korean periodic drama', image: 'koreanperiod.jpg',
+    prompt: `You are an image transform expert, transform this image to Korean periodic drama style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
+   },
+
+  {
+    label: 'Noir Drama',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, without changing any facial features, add dramatic black-and-white lighting. Keep sharp details on the face, shadows falling diagonally. Background must be completely black. Add a soft misty haze to the edges. Expression: confident but calm. Focus on upper body, crop above elbows. Suit or leather jacket, with cinematic grain. Gaze slightly off-camera like in a crime drama poster.`
+  },
+
+  {
+    label: 'Downward Gaze',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, (lighnting) sharp details on the face and suit looking to the right make the iamge black and white crop the image above the hands, focusing on the upper body remove the background and replace it with a blakc one.
+Use artificial lightning on the face and shoulder precisely enhance the shadows (not just a basic black-and-white conversion) Adjust gaze to look slightly downard`
+  },
 
 
 
+  {
+    label: 'Floral Grace',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, Create a high contrast close portrait of my face, my expression is confident and composed, with a direct gaze that engages the viewer, The lighting is warm and highlights my features, creating a soft glow on my skin, My pose is poised and graceful, with a slight turn of the head and bare shoulders visible, A striking stargazer lily added to the hair, seashell drop earrings adorn the ears, add some light pink blush across cheeks, The overall composition is balanced, with the vibrant stargazer lily adding a touch of bold color and flair against the subdued tropical background, dynamic shadows cast on my face, 35mm lens, 4k ultra HD quality, ratio 4:3`
+  },
+
+  {
+    label: 'Street Style',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A cinematic overhead shoot of me standing on a zebra crossing, spotting a neck tattoo, baggy jeans, a crop top and kick sneakers, accessories include. Make it clean.` 
+  
+  },
+
+   {
+    label: 'Rain Profile',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, Generate a high contrast close portrait of my face focusing on forehead, in black and white, 35mm lens, 4K HD quality, giving proud expression, water droplets on my face, black shadow background with only face visible, profile looking.`
+  },
+
+  {
+    label: 'Gallery Still',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A high-contrast black and white photo taken in a modern art gallery. The scene captures a candid "stolen shot" style moment of a young man standing still among a crowd in motion. He is positioned at a slight slanted angle, not fully side view, with his face turned slightly-- not completely facing the camera, but also not fully sideways.+Framing is from mid-thigh upward (3/4 body shot). He's wearing al ong, dark coat with his hands in hispockets, 10.8K standing out from the blurred crowd moving past him. The background wall displays framed 152 Banksy artworks in a grid arrangement, slightly`
+  
+  },
+
+  
+  {
+    label: 'Kimono Power',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A hyper-detailed 8K studio portrait of a 20-year-old Vietnamese woman wearing a traditional black Japanese kimono with vivid red and green floral patterns. Her face is pale and porcelain-like with a matte finish, featuring dramatic makeup — deep red velvet lips, elongated eyeliner, and subtle blush. She has intense, mysterious eyes and a confident, alluring expression.
+Her jet-black hair is styled in a neat traditional Japanese updo, adorned with a large white kitsune fox mask decorated with black tribal-like markings, worn tilted to the side of her head.
+The background is a neutral gray with a bold red circular glow (resembling a halo) placed perfectly behind her head, creating a powerful and cinematic atmosphere.
+Lighting is high-contrast and sharp, emphasizing the contours of her face and the textures of the kimono.
+The pose is semi-profile, facing slightly to the left, with her shoulders turned and chin subtly angled down, highlighting the elegance and strength of the subject.
+Shot in the style of a dramatic editorial magazine cover, ultra-realistic rendering, maximum texture detail, vertical framing, 9:16 aspect ratio, soft but clear shadows, and fashion photography lighting setup.`
+  },
+
+
+  {
+    label: 'Wet Closeup',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, a high contrast close portrait of my face focusing on front head in black and white + closeup , 35mm lens, 4k hd quality, giving proud expressions, water droplets one my face, black, 39.7 shadow background, only face is visible with my profile looking sharper adding wet long hair, 46:ratio 4:3`
+  
+  },
+
+  {
+    label: 'Train Blur',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, CROWD, ALL OTHER ARE BLUERRED WITH MOTION TRAILS, I'M IN FOCUS WITH BLACK LONG TRENCH COAT. COOL BLUE GREEN VINTAGE TONES, 35MM FILM LOOK, AMBIENT LIGHTING FROM TRAIN SGNS.
+    RATIO: PORTRAIT 4:3`
+  },
+
+  {
+    label: 'Beam Gaze',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A cinematic, surreal close-up 3/4 portrait of a striking young woman with long, loosely tousled blonde hair, and dramatic smoky eye makeup. She gazes upward with a serene, introspective expression, evoking a sense of wonder and quiet contemplation. A single beam of warm, golden-orange light slices dramatically across her eye and upper cheekbone, making her illuminated blue eye glisten with subtle highlights. Faint sparkles and delicate dust particles float within the light beam, adding an ethereal touch. The rest of her face gently fades into deep, moody teal shadows, creating a stark, dreamy contrast between light and darkness. Strands of her flowing hair catch the warm rim light, adding texture, depth, and a soft glow. Her smooth skin has a natural matte finish, softly sculpted by the dramatic lighting. The background is an abstract gradient blending deep teal into soft black, fading seamlessly into shadow to keep all focus on her illuminated eye and elegant fac tructure. High detail, cinematic lighting, surreal and dreamy atmosphere - conveying hope, mysterv, and inner calm. Ratio 9:16`
+  },
+
+  {
+    label: 'Luxury Suit',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, 
+    Create an official portrait picture of me in a black suit with sharp features and makeup still in touch, 360 HD, frontal hair, giving luxurious vibes with high detail.`
+    
+  },
+
+  {
+    label: 'Car Lean',
+    image: 'BlackAndWhite.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, 
+   An aerial cinematic shot of me leaning coolly on the hood of a black Dodge Challenger on a city street, wearing a t-shirt underneath a black jacket. A blurred crowd rushes past around me. Moody lighting, 35mm film look, shallow depth of field, sharply focused on me. 9:16 aspect ratio.`
+  },
+
+
+  
 
 ];
 
@@ -70,6 +213,8 @@ export default function PlayGround({ currentUser }) {
   const [imagePreview, setImagePreview] = useState(null); // Preview for product photo
 
   const [selectedStyle, setSelectedStyle] = useState('');
+  const [selectedPrompt, setSelectedPrompt] = useState('');
+
   const [outputImage, setOutputImage] = useState(null);
   const [mode, setMode] = useState('transform'); // 'transform' or 'scenario'
   const [user, setUser] = useState(currentUser);
@@ -188,7 +333,12 @@ export default function PlayGround({ currentUser }) {
      // Prepare form data
      const formData = new FormData();
      if (image) { formData.append("selectedImage", image);  }
+
      formData.append("selectedStyle", selectedStyle);
+     formData.append("selectedPrompt", selectedPrompt);
+
+
+
      formData.append("userId", user._id); 
 
      if (mode === 'scenario') {
@@ -500,11 +650,16 @@ export default function PlayGround({ currentUser }) {
 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-3 gap-6"> {/* Match the image size here */}
 
    <>
-        {styles.map(({ label, image }) => (
+        {styles.map(({ label, image, prompt }) => (
        
         <div
           key={label}
-          onClick={() => setSelectedStyle(label)}
+          //onClick={() => setSelectedStyle(label)}
+           onClick={() => {
+           setSelectedStyle(label);
+           setSelectedPrompt(prompt || ''); // Set prompt or empty if not defined
+          }}
+          //onClick={() => setSelectedStyle(prompt)}
           className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg border-4 transition-all duration-200 ${
             selectedStyle === label ? 'border-pink-500 scale-105' : 'border-transparent hover:border-pink-300'
           }`}
@@ -611,7 +766,7 @@ export default function PlayGround({ currentUser }) {
     <img
       src={imagePreview}
       alt="preview"
-      className="w-64 h-64 object-cover rounded-2xl shadow-lg hover:opacity-90 transition"
+      className="max-w-64 max-h-64 object-contain rounded-2xl shadow-lg hover:opacity-90 transition"
     />
     <input
       id="image-upload"
@@ -634,10 +789,17 @@ export default function PlayGround({ currentUser }) {
   <div className="flex flex-col items-center gap-6">
     <h2 className="text-xl font-bold text-gray-800">Choose a Style</h2>
     <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-3 gap-6">
-      {styles.map(({ label, image }) => (
+      
+      {styles.map(({ label, image, prompt }) => (
+
         <div
           key={label}
-          onClick={() => setSelectedStyle(label)}
+          //onClick={() => setSelectedStyle(label)}
+         // onClick={() => setSelectedStyle(prompt)}
+           onClick={() => {
+           setSelectedStyle(label);
+           setSelectedPrompt(prompt || ''); // Set prompt or empty if not defined
+          }}
           className={`relative cursor-pointer rounded-2xl overflow-hidden shadow-lg border-4 transition-all duration-200 ${
             selectedStyle === label ? 'border-pink-500 scale-105' : 'border-transparent hover:border-pink-300'
           }`}
@@ -687,7 +849,8 @@ export default function PlayGround({ currentUser }) {
           <img
             src={outputImage}
             alt="scenario output"
-            className="w-72 h-72 object-cover rounded-2xl shadow-xl"
+            //className="w-72 h-72 object-cover rounded-2xl shadow-xl"
+            className="max-w-64 max-h-64 object-contain rounded-2xl shadow-xl"
           />
         )}
 
