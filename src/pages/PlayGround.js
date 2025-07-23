@@ -15,6 +15,100 @@ import Head from 'next/head';
 
 
 const styles = [
+
+  
+  {
+    label: 'Noir Drama',
+    image: 'NoirDrama.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, without changing any facial features, add dramatic black-and-white lighting. Keep sharp details on the face, shadows falling diagonally. Background must be completely black. Add a soft misty haze to the edges. Expression: confident but calm. Focus on upper body, crop above elbows. Suit or leather jacket, with cinematic grain. Gaze slightly off-camera like in a crime drama poster.`
+  },
+
+  {
+    label: 'Downward Gaze',
+    image: 'DownwardGaze.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, (lighnting) sharp details on the face and suit looking to the right make the iamge black and white crop the image above the hands, focusing on the upper body remove the background and replace it with a blakc one.
+Use artificial lightning on the face and shoulder precisely enhance the shadows (not just a basic black-and-white conversion) Adjust gaze to look slightly downard`
+  },
+
+
+
+  {
+    label: 'Floral Grace',
+    image: 'FloralGrace.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, Create a high contrast close portrait of my face, my expression is confident and composed, with a direct gaze that engages the viewer, The lighting is warm and highlights my features, creating a soft glow on my skin, My pose is poised and graceful, with a slight turn of the head and bare shoulders visible, A striking stargazer lily added to the hair, seashell drop earrings adorn the ears, add some light pink blush across cheeks, The overall composition is balanced, with the vibrant stargazer lily adding a touch of bold color and flair against the subdued tropical background, dynamic shadows cast on my face, 35mm lens, 4k ultra HD quality, ratio 4:3`
+  },
+
+  {
+    label: 'Street Style',
+    image: 'StreetStyle.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A cinematic overhead shoot of me standing on a zebra crossing, spotting a neck tattoo, baggy jeans, a crop top and kick sneakers, accessories include. Make it clean.` 
+  
+  },
+
+   {
+    label: 'Rain Profile',
+    image: 'RainProfile.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, Generate a high contrast close portrait of my face focusing on forehead, in black and white, 35mm lens, 4K HD quality, giving proud expression, water droplets on my face, black shadow background with only face visible, profile looking.`
+  },
+
+  {
+    label: 'Gallery Still',
+    image: 'GalleryStill.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A high-contrast black and white photo taken in a modern art gallery. The scene captures a candid "stolen shot" style moment of a young man standing still among a crowd in motion. He is positioned at a slight slanted angle, not fully side view, with his face turned slightly-- not completely facing the camera, but also not fully sideways.+Framing is from mid-thigh upward (3/4 body shot). He's wearing al ong, dark coat with his hands in hispockets, 10.8K standing out from the blurred crowd moving past him. The background wall displays framed 152 Banksy artworks in a grid arrangement, slightly`
+  
+  },
+
+  
+  {
+    label: 'Kimono Power',
+    image: 'KimonoPower.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A hyper-detailed 8K studio portrait of a 20-year-old Vietnamese woman wearing a traditional black Japanese kimono with vivid red and green floral patterns. Her face is pale and porcelain-like with a matte finish, featuring dramatic makeup — deep red velvet lips, elongated eyeliner, and subtle blush. She has intense, mysterious eyes and a confident, alluring expression.
+Her jet-black hair is styled in a neat traditional Japanese updo, adorned with a large white kitsune fox mask decorated with black tribal-like markings, worn tilted to the side of her head.
+The background is a neutral gray with a bold red circular glow (resembling a halo) placed perfectly behind her head, creating a powerful and cinematic atmosphere.
+Lighting is high-contrast and sharp, emphasizing the contours of her face and the textures of the kimono.
+The pose is semi-profile, facing slightly to the left, with her shoulders turned and chin subtly angled down, highlighting the elegance and strength of the subject.
+Shot in the style of a dramatic editorial magazine cover, ultra-realistic rendering, maximum texture detail, vertical framing, 9:16 aspect ratio, soft but clear shadows, and fashion photography lighting setup.`
+  },
+
+
+  {
+    label: 'Wet Closeup',
+    image: 'WetCloseup.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, a high contrast close portrait of my face focusing on front head in black and white + closeup , 35mm lens, 4k hd quality, giving proud expressions, water droplets one my face, black, 39.7 shadow background, only face is visible with my profile looking sharper adding wet long hair, 46:ratio 4:3`
+  
+  },
+
+  {
+    label: 'Train Blur',
+    image: 'TrainBlur.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, CROWD, ALL OTHER ARE BLUERRED WITH MOTION TRAILS, I'M IN FOCUS WITH BLACK LONG TRENCH COAT. COOL BLUE GREEN VINTAGE TONES, 35MM FILM LOOK, AMBIENT LIGHTING FROM TRAIN SGNS.
+    RATIO: PORTRAIT 4:3`
+  },
+
+  {
+    label: 'Beam Gaze',
+    image: 'BeamGaze.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A cinematic, surreal close-up 3/4 portrait of a striking young woman with long, loosely tousled blonde hair, and dramatic smoky eye makeup. She gazes upward with a serene, introspective expression, evoking a sense of wonder and quiet contemplation. A single beam of warm, golden-orange light slices dramatically across her eye and upper cheekbone, making her illuminated blue eye glisten with subtle highlights. Faint sparkles and delicate dust particles float within the light beam, adding an ethereal touch. The rest of her face gently fades into deep, moody teal shadows, creating a stark, dreamy contrast between light and darkness. Strands of her flowing hair catch the warm rim light, adding texture, depth, and a soft glow. Her smooth skin has a natural matte finish, softly sculpted by the dramatic lighting. The background is an abstract gradient blending deep teal into soft black, fading seamlessly into shadow to keep all focus on her illuminated eye and elegant fac tructure. High detail, cinematic lighting, surreal and dreamy atmosphere - conveying hope, mysterv, and inner calm. Ratio 9:16`
+  },
+
+  {
+    label: 'Luxury Suit',
+    image: 'LuxurySuit.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, 
+    Create an official portrait picture of me in a black suit with sharp features and makeup still in touch, 360 HD, frontal hair, giving luxurious vibes with high detail.`
+    
+  },
+
+  {
+    label: 'Car Lean',
+    image: 'CarLean.jpg',
+    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, 
+   An aerial cinematic shot of me leaning coolly on the hood of a black Dodge Challenger on a city street, wearing a t-shirt underneath a black jacket. A blurred crowd rushes past around me. Moody lighting, 35mm film look, shallow depth of field, sharply focused on me. 9:16 aspect ratio.`
+  },
+
+
+
+
   { label: 'GTA 6 Game', 
     image: 'gta6.jpg',
     prompt: `You are an image transform expert, transform this image to GTA 6 Game style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
@@ -89,94 +183,6 @@ const styles = [
     prompt: `You are an image transform expert, transform this image to Korean periodic drama style, make sure the style is expressed in the photo at the best quality. Keep the resolution 1024x1024`
    },
 
-  {
-    label: 'Noir Drama',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, without changing any facial features, add dramatic black-and-white lighting. Keep sharp details on the face, shadows falling diagonally. Background must be completely black. Add a soft misty haze to the edges. Expression: confident but calm. Focus on upper body, crop above elbows. Suit or leather jacket, with cinematic grain. Gaze slightly off-camera like in a crime drama poster.`
-  },
-
-  {
-    label: 'Downward Gaze',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, (lighnting) sharp details on the face and suit looking to the right make the iamge black and white crop the image above the hands, focusing on the upper body remove the background and replace it with a blakc one.
-Use artificial lightning on the face and shoulder precisely enhance the shadows (not just a basic black-and-white conversion) Adjust gaze to look slightly downard`
-  },
-
-
-
-  {
-    label: 'Floral Grace',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, Create a high contrast close portrait of my face, my expression is confident and composed, with a direct gaze that engages the viewer, The lighting is warm and highlights my features, creating a soft glow on my skin, My pose is poised and graceful, with a slight turn of the head and bare shoulders visible, A striking stargazer lily added to the hair, seashell drop earrings adorn the ears, add some light pink blush across cheeks, The overall composition is balanced, with the vibrant stargazer lily adding a touch of bold color and flair against the subdued tropical background, dynamic shadows cast on my face, 35mm lens, 4k ultra HD quality, ratio 4:3`
-  },
-
-  {
-    label: 'Street Style',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A cinematic overhead shoot of me standing on a zebra crossing, spotting a neck tattoo, baggy jeans, a crop top and kick sneakers, accessories include. Make it clean.` 
-  
-  },
-
-   {
-    label: 'Rain Profile',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, Generate a high contrast close portrait of my face focusing on forehead, in black and white, 35mm lens, 4K HD quality, giving proud expression, water droplets on my face, black shadow background with only face visible, profile looking.`
-  },
-
-  {
-    label: 'Gallery Still',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A high-contrast black and white photo taken in a modern art gallery. The scene captures a candid "stolen shot" style moment of a young man standing still among a crowd in motion. He is positioned at a slight slanted angle, not fully side view, with his face turned slightly-- not completely facing the camera, but also not fully sideways.+Framing is from mid-thigh upward (3/4 body shot). He's wearing al ong, dark coat with his hands in hispockets, 10.8K standing out from the blurred crowd moving past him. The background wall displays framed 152 Banksy artworks in a grid arrangement, slightly`
-  
-  },
-
-  
-  {
-    label: 'Kimono Power',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A hyper-detailed 8K studio portrait of a 20-year-old Vietnamese woman wearing a traditional black Japanese kimono with vivid red and green floral patterns. Her face is pale and porcelain-like with a matte finish, featuring dramatic makeup — deep red velvet lips, elongated eyeliner, and subtle blush. She has intense, mysterious eyes and a confident, alluring expression.
-Her jet-black hair is styled in a neat traditional Japanese updo, adorned with a large white kitsune fox mask decorated with black tribal-like markings, worn tilted to the side of her head.
-The background is a neutral gray with a bold red circular glow (resembling a halo) placed perfectly behind her head, creating a powerful and cinematic atmosphere.
-Lighting is high-contrast and sharp, emphasizing the contours of her face and the textures of the kimono.
-The pose is semi-profile, facing slightly to the left, with her shoulders turned and chin subtly angled down, highlighting the elegance and strength of the subject.
-Shot in the style of a dramatic editorial magazine cover, ultra-realistic rendering, maximum texture detail, vertical framing, 9:16 aspect ratio, soft but clear shadows, and fashion photography lighting setup.`
-  },
-
-
-  {
-    label: 'Wet Closeup',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, a high contrast close portrait of my face focusing on front head in black and white + closeup , 35mm lens, 4k hd quality, giving proud expressions, water droplets one my face, black, 39.7 shadow background, only face is visible with my profile looking sharper adding wet long hair, 46:ratio 4:3`
-  
-  },
-
-  {
-    label: 'Train Blur',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, CROWD, ALL OTHER ARE BLUERRED WITH MOTION TRAILS, I'M IN FOCUS WITH BLACK LONG TRENCH COAT. COOL BLUE GREEN VINTAGE TONES, 35MM FILM LOOK, AMBIENT LIGHTING FROM TRAIN SGNS.
-    RATIO: PORTRAIT 4:3`
-  },
-
-  {
-    label: 'Beam Gaze',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, A cinematic, surreal close-up 3/4 portrait of a striking young woman with long, loosely tousled blonde hair, and dramatic smoky eye makeup. She gazes upward with a serene, introspective expression, evoking a sense of wonder and quiet contemplation. A single beam of warm, golden-orange light slices dramatically across her eye and upper cheekbone, making her illuminated blue eye glisten with subtle highlights. Faint sparkles and delicate dust particles float within the light beam, adding an ethereal touch. The rest of her face gently fades into deep, moody teal shadows, creating a stark, dreamy contrast between light and darkness. Strands of her flowing hair catch the warm rim light, adding texture, depth, and a soft glow. Her smooth skin has a natural matte finish, softly sculpted by the dramatic lighting. The background is an abstract gradient blending deep teal into soft black, fading seamlessly into shadow to keep all focus on her illuminated eye and elegant fac tructure. High detail, cinematic lighting, surreal and dreamy atmosphere - conveying hope, mysterv, and inner calm. Ratio 9:16`
-  },
-
-  {
-    label: 'Luxury Suit',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, 
-    Create an official portrait picture of me in a black suit with sharp features and makeup still in touch, 360 HD, frontal hair, giving luxurious vibes with high detail.`
-    
-  },
-
-  {
-    label: 'Car Lean',
-    image: 'BlackAndWhite.jpg',
-    prompt: `Use the uploaded photo as strict reference. Do not alter the face shape, eye spacing, lips, nose. Keep the identity, facial proportions, and skin texture intact — photorealistic and biometric-match accuracy, 
-   An aerial cinematic shot of me leaning coolly on the hood of a black Dodge Challenger on a city street, wearing a t-shirt underneath a black jacket. A blurred crowd rushes past around me. Moody lighting, 35mm film look, shallow depth of field, sharply focused on me. 9:16 aspect ratio.`
-  },
 
 
   
